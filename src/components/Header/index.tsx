@@ -1,26 +1,22 @@
-import React from 'react';
-import Link from 'next/link'
+import React from 'react'
 
 import S from './styles.module.scss';
 
-import { SigninButton } from '../SigninButton';
+import { SigninButton, ActiveLink } from '@/components';
 
-export const Header = () => {
-
-  return (
-    <header className={S.headerContainer}>
-      <div className={S.headerContent}>
-        <img src="/images/logo.svg" alt="logo ig.news" width="110" height="31" />
-        <nav>
-          <Link href="/">
-            <a className={S.active}>Home</a>
-          </Link>
-          <Link href="/">
-            <a>Posts</a>
-          </Link>
-        </nav>
-        <SigninButton />
-      </div>
-    </header>
-  )
-}
+export const Header = () => (
+  <header className={S.headerContainer}>
+    <div className={S.headerContent}>
+      <img src="/images/logo.svg" alt="logo ig.news" width="110" height="31" />
+      <nav>
+        <ActiveLink activeClassName={S.active} href="/">
+          <a>Home</a>
+        </ActiveLink>
+        <ActiveLink activeClassName={S.active} href="/posts">
+          <a>Posts</a>
+        </ActiveLink>
+      </nav>
+      <SigninButton />
+    </div>
+  </header>
+)

@@ -6,7 +6,6 @@ import S from './styles.module.scss'
 
 export const SigninButton = () => {
   const [session] = useSession()
-  console.log('session', session)
 
   return (
     <button type="button" className={S.singinButton} onClick={() => session ? signOut() : signIn('github')}>

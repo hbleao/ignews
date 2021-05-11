@@ -2,7 +2,7 @@ import React from "react"
 import Head from 'next/head';
 import { GetStaticProps } from "next";
 
-import { SectionHome } from '@/components';
+import { SectionHome } from '@/components/Sections';
 import { stripe } from "@/services/stripeService";
 
 type HomeProps = {

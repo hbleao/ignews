@@ -10,7 +10,7 @@ type User = {
     id: string,
   },
   data: {
-    stripe_custumer_id: string,
+    stripe_customer_id: string,
   }
 }
 
@@ -27,12 +27,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       )
     )
 
-    let customerId = user.data.stripe_custumer_id
+    let customerId = user.data.stripe_customer_id
 
     if (!customerId) {
       const stripeCostumer = await stripe.customers.create({
         email: session.user.email,
-        //metadata
       })
 
       await fauna.query(
@@ -40,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           query.Ref(query.Collection('users'), user.ref.id),
           { 
             data: {
-              stripe_costumer_id: stripeCostumer.id
+              stripe_customer_id: stripeCostumer.id
             }
           }
         )
